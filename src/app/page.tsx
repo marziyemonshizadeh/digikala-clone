@@ -1,7 +1,7 @@
 "use client";
 
 import Category from "@/components/_pages/home/Categories/Category";
-import ScrollToTop from "@/components/_pages/home/ScrollToTop";
+import MarketBtn from "@/components/_pages/home/MarketButton";
 import Footer from "@/components/layout/Footer/Footer";
 import Header from "@/components/layout/Header/Header";
 import Link from "next/link";
@@ -22,7 +22,7 @@ export default function page() {
       <Header />/ page
       <Category />
       <div className="flex-1 z-50">
-        <ScrollToTop />
+        <MarketBtn />
         <Link
           href="#"
           id="btn-back-to-top"
