@@ -1,10 +1,17 @@
-type Props = {};
+type CategoryProps = {
+  url: string;
+  title: string;
+};
 
-function Category({}: Props) {
+function Category({ url, title }: CategoryProps) {
   return (
-    <div className="w-[75px] h-[99.99px]">
-      <div className="w-[52px] h-[52px] rounded-full bg-red-500"></div>
-      <span>Category</span>
+    <div className="flex flex-col items-center user-select-none my-2 lg:my-0 lg:w-35 w-1/8 shrink-0 lg:!w-[82px] w-[75px]">
+      <div style={{ width: "52px", height: "52px", lineHeight: "0" }}>
+        <img alt={title} src={url} className="w-full inline-block" />
+      </div>
+      <span className="text-caption-strong text-neutral-700 mt-1 text-center px-3 lg:px-4">
+        {title}
+      </span>
     </div>
   );
 }
