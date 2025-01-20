@@ -1,4 +1,5 @@
 import FooterGallery from "./FooterGallery";
+import SmallDevicesFooter from "./SmallDevicesFooter";
 
 type Props = {};
 
@@ -11,6 +12,7 @@ function Footer({}: Props) {
         آنلاین دیجی‌کالا) است.
       </div>
       <FooterGallery />
+      <SmallDevicesFooter />
     </>
   );
 }

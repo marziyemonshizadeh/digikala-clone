@@ -1,23 +1,28 @@
 "use client";
 
-import Categories from "@/components/_pages/home/Categories/Categories";
-import MarketBtn from "@/components/_pages/home/MarketButton";
-import ShoppingByCategory from "@/components/_pages/home/ShoppingByCategory/ShoppingByCategory";
+// import Categories from "@/components/_pages/home/Categories/Categories";
+// import MarketBtn from "@/components/_pages/home/MarketButton";
+// import ShoppingByCategory from "@/components/_pages/home/ShoppingByCategory/ShoppingByCategory";
 import Footer from "@/components/layout/Footer/Footer";
 import SmallDevicesFooter from "@/components/layout/Footer/SmallDevicesFooter";
 import Header from "@/components/layout/Header/Header";
 import Link from "next/link";
 import { BiSupport } from "react-icons/bi";
+import Categories from "./(home)/home/components/Categories/Categories";
+import MarketBtn from "./(home)/home/components/MarketButton";
+import ShoppingByCategory from "./(home)/home/components/ShoppingByCategory/ShoppingByCategory";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 // import { useRouter } from "next/router";
 // import { useEffect } from "react";
 
 export default function page() {
-  // const { push } = useRouter();
+  const { push } = useRouter();
 
-  // useEffect(() => {
-  //   push("/home");
-  // }, []);
+  useEffect(() => {
+    push("/home");
+  }, []);
 
   return (
     <div className="bg-white dark:bg-[#2e2b27] flex flex-col justify-between min-h-screen">
