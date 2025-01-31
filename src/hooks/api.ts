@@ -1,6 +1,5 @@
-import apiRequests, { http } from "@/configs/axiosInstance";
+import { http } from "@/configs/axiosInstance";
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
 // get datas
 const useGetService = <T>(
@@ -9,10 +8,8 @@ const useGetService = <T>(
   enabled: boolean = true,
   options: UseQueryOptions<T> | undefined = undefined
 ) => {
-    console.log(endPoint);
-    
   return useQuery({
-    queryFn: async () => (await apiRequests.get(endPoint)).data,
+    queryFn: async () => (await http.get(endPoint)).data,
     queryKey: [key],
     staleTime: Infinity,
     enabled: enabled,
