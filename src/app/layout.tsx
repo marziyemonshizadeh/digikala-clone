@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
+// import { AxiosInterceptor } from "@/configs/axiosInstance";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,22 +22,25 @@ export default function RootLayout({
     <html lang="fa" dir="rtl">
       <body>
         <div className="static">
-          <NextTopLoader
-            color="#FF0800"
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={3}
-            crawl={true}
-            showSpinner={false}
-            easing="ease"
-            speed={400}
-            shadow="0 0 10px #431407,0 0 5px #431407"
-            template='<div class="bar" role="bar"><div class="peg"></div></div> 
+          <ReactQueryProvider>
+            <NextTopLoader
+              color="#FF0800"
+              initialPosition={0.08}
+              crawlSpeed={200}
+              height={3}
+              crawl={true}
+              showSpinner={false}
+              easing="ease"
+              speed={400}
+              shadow="0 0 10px #431407,0 0 5px #431407"
+              template='<div class="bar" role="bar"><div class="peg"></div></div> 
 <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-            zIndex={1600}
-            showAtBottom={false}
-          />
-          {children}
+              zIndex={1600}
+              showAtBottom={false}
+            />
+            {children}
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ReactQueryProvider>
         </div>
       </body>
     </html>
