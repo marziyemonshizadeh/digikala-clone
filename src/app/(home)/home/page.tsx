@@ -1,16 +1,21 @@
-import Link from "next/link";
-import { BiSupport } from "react-icons/bi";
-import Categories from "./components/Categories/Categories";
-import MarketBtn from "./components/MarketButton";
-import ShoppingByCategory from "./components/ShoppingByCategory/ShoppingByCategory";
+"use client";
+import { homeWidget } from "@/constants/endpoints";
+import { useGetService } from "@/hooks/api";
+import Stories from "./components/Stories/Stories";
+// import { useGetService } from "@/hooks/api";
+// import { homeWidget } from "@/constants/endpoints";
 
 type Props = {};
 
 export default function Home({}: Props) {
+  const { data } = useGetService<any>(homeWidget, homeWidget, true);
+  console.log("data", data);
+
   return (
     <main className="grow">
-      <Categories />
-      <div className="flex-1 z-50 lg:block hidden">
+      <Stories />
+      {/* <Categories /> */}
+      {/* <div className="flex-1 z-50 lg:block hidden">
         <MarketBtn />
         <Link
           href="#"
@@ -48,7 +53,7 @@ export default function Home({}: Props) {
           </a>
         </div>
       </div>
-      <ShoppingByCategory />
+      <ShoppingByCategory /> */}
     </main>
   );
 }
