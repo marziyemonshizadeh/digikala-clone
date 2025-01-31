@@ -14,8 +14,8 @@ function FullSider({ data }: FullSiderProps) {
       loop={true}
       autoplay={{ delay: 4000, disableOnInteraction: false }}
       modules={[Navigation, Autoplay]}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
+      className="overflow-hidden"
+
     >
       {data?.map(
         (slider: { image: string | undefined; title: string | undefined }) => {

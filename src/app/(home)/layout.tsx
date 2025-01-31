@@ -11,8 +11,7 @@ const HomePageLayout = async ({ children }: homePageLayoutProps) => {
     <div className="bg-white dark:bg-[#2e2b27] flex flex-col min-h-screen">
       <Header />
       {children}
-      {/* <Category /> */}
-      <div className="flex items-center flex-1">
+      <div className="flex items-center flex-1 px-5">
         {/* <ScrollToTop /> */}
         <Link
           href="#"
