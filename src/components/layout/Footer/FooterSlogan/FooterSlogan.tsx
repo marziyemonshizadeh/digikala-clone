@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import FooterInfo from "./FooterInfo";
+import FooterInfo from "./FooterInfo/FooterInfo";
 
 function FooterSlogan() {
   const [open, setOpen] = useState(false);
