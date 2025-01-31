@@ -1,6 +1,9 @@
 "use client";
 import { homeWidget } from "@/constants/endpoints";
 import { useGetService } from "@/hooks/api";
+import { SetStateAction, useEffect, useState } from "react";
+import Categories from "./components/Categories/Categories";
+import FullSider from "./components/FullSider/FullSider";
 import Stories from "./components/Stories/Stories";
 // import { useGetService } from "@/hooks/api";
 // import { homeWidget } from "@/constants/endpoints";
@@ -8,13 +11,27 @@ import Stories from "./components/Stories/Stories";
 type Props = {};
 
 export default function Home({}: Props) {
-  const { data } = useGetService<any>(homeWidget, homeWidget, true);
-  console.log("data", data);
+  const { data, isLoading } = useGetService<any>(homeWidget, homeWidget, true);
+  const [fullSliderData, setFullSliderData] = useState([]);
+  const [deepLinksData, setDeepLinksData] = useState([]);
+  console.log("data", data?.data?.widgets);
+
+  useEffect(() => {
+    if (!isLoading) {
+      data?.data?.widgets?.map(
+        (widget: { type: string; data: SetStateAction<never[]> }) => {
+          if (widget.type == "full_slider") setFullSliderData(widget?.data);
+          else if (widget.type == "deep_links") setDeepLinksData(widget?.data);
+        }
+      );
+    }
+  }, [isLoading]);
 
   return (
     <main className="grow">
       <Stories />
-      {/* <Categories /> */}
+      <FullSider data={fullSliderData} />
+      <Categories data={deepLinksData} />
       {/* <div className="flex-1 z-50 lg:block hidden">
         <MarketBtn />
         <Link
