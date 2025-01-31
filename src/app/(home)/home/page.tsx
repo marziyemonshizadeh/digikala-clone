@@ -4,6 +4,7 @@ import { useGetService } from "@/hooks/api";
 import { SetStateAction, useEffect, useState } from "react";
 import Categories from "./components/Categories/Categories";
 import FullSider from "./components/FullSider/FullSider";
+import ShoppingByCategory from "./components/ShoppingByCategory/ShoppingByCategory";
 import Stories from "./components/Stories/Stories";
 // import { useGetService } from "@/hooks/api";
 // import { homeWidget } from "@/constants/endpoints";
@@ -14,14 +15,23 @@ export default function Home({}: Props) {
   const { data, isLoading } = useGetService<any>(homeWidget, homeWidget, true);
   const [fullSliderData, setFullSliderData] = useState([]);
   const [deepLinksData, setDeepLinksData] = useState([]);
+  const [shoppingByCategoryData, setShoppingByCategoryData] = useState([]);
+  const [popularBrandsData, setPopularBrandsData] = useState([]);
+
   console.log("data", data?.data?.widgets);
 
   useEffect(() => {
+    // set Widgets
     if (!isLoading) {
       data?.data?.widgets?.map(
         (widget: { type: string; data: SetStateAction<never[]> }) => {
+          // switch case
           if (widget.type == "full_slider") setFullSliderData(widget?.data);
           else if (widget.type == "deep_links") setDeepLinksData(widget?.data);
+          else if (widget.type == "main_categories_grid")
+            setShoppingByCategoryData(widget?.data);
+          else if (widget.type == "popular_brands_grid")
+            setPopularBrandsData(widget?.data);
         }
       );
     }
@@ -32,6 +42,7 @@ export default function Home({}: Props) {
       <Stories />
       <FullSider data={fullSliderData} />
       <Categories data={deepLinksData} />
+      <ShoppingByCategory data={shoppingByCategoryData} />
       {/* <div className="flex-1 z-50 lg:block hidden">
         <MarketBtn />
         <Link
