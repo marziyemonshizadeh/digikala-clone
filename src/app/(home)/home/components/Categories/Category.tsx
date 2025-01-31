@@ -9,7 +9,7 @@ function Category({ url, title }: CategoryProps) {
       <div style={{ width: "52px", height: "52px", lineHeight: "0" }}>
         <img alt={title} src={url} className="w-full inline-block" />
       </div>
-      <span className="text-caption-strong text-neutral-700 mt-1 text-center px-3 lg:px-4">
+      <span className="text-neutral-700 mt-1 text-sm font-semibold text-center px-3 lg:px-4">
         {title}
       </span>
     </div>
